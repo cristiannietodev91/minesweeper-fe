@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { SquareProps, SquareStatus } from "types";
+import { PlayerAttributes, SquareProps, SquareStatus } from "types";
 import type { RootState } from "../store";
 
 interface Position {
@@ -8,13 +8,12 @@ interface Position {
 }
 
 interface GameState {
-  player: string;
+  player?: PlayerAttributes;
   board: SquareProps[][];
 }
 
 // Define the initial state using that type
 const initialState: GameState = {
-  player: "Cristian",
   board: [
     [
       { hasMine: true, status: SquareStatus.Covered },
@@ -33,6 +32,14 @@ export const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
+    setLoggedUser: (state, action: PayloadAction<PlayerAttributes>) => {
+      state.player = action.payload;
+      return state;
+    },
+    logOut: (state) => {
+      state.player = undefined;
+      return state;
+    },
     uncoveredField: (state, action: PayloadAction<Position>) => {
       state.board[action.payload.x][action.payload.y] = {
         ...state.board[action.payload.x][action.payload.y],
@@ -54,7 +61,7 @@ export const gameSlice = createSlice({
   },
 });
 
-export const { uncoveredField, flagField } = gameSlice.actions;
+export const { uncoveredField, flagField, setLoggedUser, logOut } = gameSlice.actions;
 
 export const selectPlayer = (state: RootState) => state.gameReducer.player;
 export const selectBoard = (state: RootState) => state.gameReducer.board;

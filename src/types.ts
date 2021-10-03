@@ -22,3 +22,10 @@ export enum SquareStatus {
   Covered = "Covered",
   Uncovered = "Uncovered",
 }
+
+export interface PlayerAttributes {
+  idplayer: number;
+  nickname: string;
+  email: string;
+  uid: string;
+}
