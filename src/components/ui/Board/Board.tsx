@@ -5,16 +5,26 @@ import styles from "./Board.module.css";
 
 interface BoardProps {
   board: SquareProps[][];
+  handleClick: (
+    x: number,
+    y: number,
+    event: React.MouseEvent<HTMLElement>
+  ) => void;
 }
 
-const Board = ({ board }: BoardProps) => {
+const Board = ({ board, handleClick }: BoardProps) => {
   return (
     <div>
-      {board.map((row) => {
+      {board.map((row, indexX) => {
         return (
-          <div className={styles.row}>
-            {row.map((square) => (
-              <Square hasMine={square.hasMine} status={square.status}></Square>
+          <div className={styles.row} key={indexX}>
+            {row.map((square, indexY) => (
+              <Square
+                hasMine={square.hasMine}
+                status={square.status}
+                handleClick={(e) => handleClick(indexX, indexY, e)}
+                key={indexY}
+              ></Square>
             ))}
           </div>
         );
