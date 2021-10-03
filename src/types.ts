@@ -12,6 +12,7 @@ export interface Game {
   columns: number;
   score: number;
   numberofmines: number;
+  board: SquareProps[][];
   startdate?: Date;
   pausedate?: Date;
   enddate?: Date;
@@ -28,4 +29,10 @@ export interface PlayerAttributes {
   nickname: string;
   email: string;
   uid: string;
+}
+
+export interface CreateGameProps {
+  idplayer: number;
+  rows: number;
+  columns: number;
 }
