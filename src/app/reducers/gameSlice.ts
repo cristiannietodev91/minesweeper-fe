@@ -14,18 +14,7 @@ interface GameState {
 
 // Define the initial state using that type
 const initialState: GameState = {
-  board: [
-    [
-      { hasMine: true, status: SquareStatus.Covered },
-      { hasMine: false, status: SquareStatus.Covered },
-      { hasMine: false, status: SquareStatus.Covered, numberOfMines: 5 },
-    ],
-    [
-      { hasMine: true, status: SquareStatus.Covered },
-      { hasMine: false, status: SquareStatus.Covered },
-      { hasMine: false, status: SquareStatus.Covered, numberOfMines: 5 },
-    ],
-  ],
+  board: [],
 };
 
 export const gameSlice = createSlice({
@@ -38,6 +27,10 @@ export const gameSlice = createSlice({
     },
     logOut: (state) => {
       state.player = undefined;
+      return state;
+    },
+    setNewBoard: (state, action: PayloadAction<SquareProps[][]>)=>{
+      state.board = action.payload;
       return state;
     },
     uncoveredField: (state, action: PayloadAction<Position>) => {
@@ -61,7 +54,8 @@ export const gameSlice = createSlice({
   },
 });
 
-export const { uncoveredField, flagField, setLoggedUser, logOut } = gameSlice.actions;
+export const { uncoveredField, flagField, setLoggedUser, logOut, setNewBoard } =
+  gameSlice.actions;
 
 export const selectPlayer = (state: RootState) => state.gameReducer.player;
 export const selectBoard = (state: RootState) => state.gameReducer.board;
