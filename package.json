@@ -84,7 +84,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -s ./src -p 6006",
     "build-storybook": "build-storybook"
   },
   "eslintConfig": {
@@ -176,6 +176,7 @@
     "@storybook/addon-actions": "^6.3.9",
     "@storybook/addon-essentials": "^6.3.9",
     "@storybook/addon-links": "^6.3.9",
-    "@storybook/react": "^6.3.9"
+    "@storybook/react": "^6.3.9",
+    "storybook-css-modules-preset": "^1.1.1"
   }
 }
