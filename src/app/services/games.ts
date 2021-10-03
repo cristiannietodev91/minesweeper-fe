@@ -1,6 +1,6 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { Game } from 'app/types'
+import { Game } from 'types'
 
 
 export const gameApi = createApi({
