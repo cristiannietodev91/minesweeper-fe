@@ -2,6 +2,7 @@ export interface SquareProps {
   hasMine: boolean;
   status: SquareStatus;
   numberOfMines?: number;
+  handleClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 export interface Game {

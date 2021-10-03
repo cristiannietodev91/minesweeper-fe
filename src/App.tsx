@@ -1,13 +1,27 @@
 import React from "react";
-import Square from "components/ui/Square/Square";
-import { SquareStatus } from "types";
+import { useSelector, useDispatch } from "react-redux";
+import Board from "components/ui/Board/Board";
+import { selectBoard, uncoveredField, flagField } from "app/reducers/gameSlice";
 
 function App() {
+  const board = useSelector(selectBoard);
+  const dispatch = useDispatch();
+
+  const handleClick = (
+    x: number,
+    y: number,
+    e: React.MouseEvent<HTMLElement>
+  ) => {
+    if (e.type === "click") {
+      dispatch(uncoveredField({ x, y }));
+    } else if (e.type === "contextmenu") {
+      dispatch(flagField({ x, y }));
+    }
+  };
+
   return (
     <div className="App">
-      <Square hasMine={true} status={SquareStatus.Covered}></Square>
-      <Square hasMine={false} status={SquareStatus.Flag}></Square>
-      <Square hasMine={false} status={SquareStatus.Uncovered} numberOfMines={3}></Square>
+      <Board board={board} handleClick={handleClick}></Board>
     </div>
   );
 }
