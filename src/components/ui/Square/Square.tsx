@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from "classnames";
 import styles from "./square.module.css";
 import mine from "./assets/mine.png";
 import flag from "./assets/flag.png";
@@ -12,7 +13,9 @@ const Square = ({
 }: SquareProps) => {
   return (
     <div
-      className={styles.container}
+      className={classnames(styles.container,{
+        [styles.containerUncovered]: status === SquareStatus.Uncovered && !numberOfMines
+      })}
       onClick={status !== SquareStatus.Uncovered ? handleClick : undefined}
       onContextMenu={(e) => {
         e.preventDefault();
@@ -29,8 +32,10 @@ const Square = ({
           {status === SquareStatus.Flag && (
             <img src={flag} alt="mine" className={styles.img} />
           )}
-          {!hasMine && numberOfMines && status === SquareStatus.Uncovered && (
-            <span className={styles.numbers}>{numberOfMines}</span>
+          {!hasMine && status === SquareStatus.Uncovered && (
+            <span className={styles.numbers}>
+              {!numberOfMines ? "" : numberOfMines}
+            </span>
           )}
         </>
       )}

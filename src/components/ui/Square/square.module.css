@@ -1,11 +1,15 @@
 .container {
-  width: 45px;
-  height: 45px;
-  background-color: #aeaeae;
+  width: 35px;
+  height: 35px;
+  background-color: #a29e9c;
   border-radius: 5px;
   text-align: center;
   padding: 5px;
   margin: 3px;
+}
+
+.containerUncovered {
+  background-color: #aeaeae;
 }
 
 .img {

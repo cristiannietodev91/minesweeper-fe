@@ -27,8 +27,13 @@
 
 .boardContainer {
   position: absolute;
-  top: 30%;
-  left: 30%;
+  height: 100vh;
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .imgContainer {
@@ -44,4 +49,14 @@
 
 .logOutButton {
   bottom: 10px;
+}
+
+.msgContainer {
+  border: 0.5;
+  font-size: 3rem;
+  line-height: 15px;
+  margin-bottom: 25px;
+  height: 40px;
+  font-weight: bold;
+  color: #fff;
 }

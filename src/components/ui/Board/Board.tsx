@@ -22,6 +22,7 @@ const Board = ({ board, handleClick }: BoardProps) => {
               <Square
                 hasMine={square.hasMine}
                 status={square.status}
+                numberOfMines={square.numberOfMines}
                 handleClick={(e) => handleClick(indexX, indexY, e)}
                 key={indexY}
               ></Square>

@@ -18,6 +18,13 @@ export interface Game {
   enddate?: Date;
 }
 
+export enum GameStatus {
+  NoGameLoad = "NoGameLoad",
+  Initiating = "Initiating",
+  Playing = "Playing",
+  Over = "Over"
+}
+
 export enum SquareStatus {
   Flag = "Flag",
   Covered = "Covered",
@@ -35,4 +42,15 @@ export interface CreateGameProps {
   idplayer: number;
   rows: number;
   columns: number;
+}
+
+export interface StartGameProps {
+  idgame: number;
+  x: number;
+  y: number;
+}
+
+export interface GameStatusProps {
+  idgame: number;
+  gameStatus: GameStatus
 }
