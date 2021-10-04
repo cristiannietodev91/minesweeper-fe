@@ -1,12 +1,37 @@
 # Getting Started with Create React App
 
+This project is a version of minesweeper create with React, React Redux, React RTK.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Motivation
+
+This project was developed for an interview process. The idea is to show all my skills using the tools which this project was built. 
+
+## Notes
+
+- It is my first time using React RTK I thought it was good take advantage this project to see how it works
+- It is my first time using storybook in a project I think is good to test ui components
+
+## How to start
+
+Set .env File
+
+```
+REACT_APP_API_URL=http://localhost:3000
+```
+
+Executes on root folder
+
+```
+yarn install
+```
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `yarn start`
+
 
 Runs the app in the development mode.\
 Open [http://localhost:3005](http://localhost:3005) to view it in the browser.
@@ -29,23 +54,10 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### `yarn storybook`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-### Test components (storybook)
-
-Run story book project
-
-```
-yarn storybook
-```
+Run story book project to test each component
 
 
 ## Learn More
