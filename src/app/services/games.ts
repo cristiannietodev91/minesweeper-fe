@@ -5,7 +5,9 @@ import { CreateGameProps, Game, PlayerAttributes, StartGameProps } from "types";
 export const gameApi = createApi({
   reducerPath: "gameApi",
   tagTypes: ["Games"],
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: process.env.REACT_APP_API_URL || "http://localhost:3000/",
+  }),
   endpoints: (builder) => ({
     getListOfGames: builder.query<Game, string>({
       query: () => `players/getAll`,
@@ -37,5 +39,5 @@ export const {
   useGetListOfGamesQuery,
   useLoginUserMutation,
   useCreateGameMutation,
-  useStartGameMutation
+  useStartGameMutation,
 } = gameApi;
