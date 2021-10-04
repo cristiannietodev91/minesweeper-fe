@@ -1,6 +1,6 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { CreateGameProps, Game, PlayerAttributes } from "types";
+import { CreateGameProps, Game, PlayerAttributes, StartGameProps } from "types";
 
 export const gameApi = createApi({
   reducerPath: "gameApi",
@@ -24,6 +24,12 @@ export const gameApi = createApi({
         body,
       }),
     }),
+    startGame: builder.mutation<Game, StartGameProps>({
+      query: ({ idgame, x, y }) => ({
+        url: `game/startgame/${idgame}/${x}/${y}`,
+        method: "PATCH",
+      }),
+    }),
   }),
 });
 
@@ -31,4 +37,5 @@ export const {
   useGetListOfGamesQuery,
   useLoginUserMutation,
   useCreateGameMutation,
+  useStartGameMutation
 } = gameApi;
