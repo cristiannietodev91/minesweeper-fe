@@ -140,5 +140,29 @@ export const selectBoard = (state: RootState) => state.gameReducer.board;
 export const selectGameStatus = (state: RootState) =>
   state.gameReducer.gameStatus;
 export const selectGame = (state: RootState) => state.gameReducer.idgame;
+export const selectRemainingMines = (state: RootState) =>
+  Math.max(
+    state.gameReducer.board.reduce(
+      (acc, val) => acc + val.filter((x) => x.hasMine).length,
+      0
+    ) -
+      state.gameReducer.board.reduce(
+        (acc, val) =>
+          acc + val.filter((x) => x.status === SquareStatus.Flag).length,
+        0
+      ),
+    0
+  );
+export const selectWinGame = (state: RootState) =>
+  state.gameReducer.board.reduce(
+    (acc, val) => acc + val.filter((x) => x.hasMine).length,
+    0
+  ) ===
+  state.gameReducer.board.reduce(
+    (acc, val) =>
+      acc +
+      val.filter((x) => x.hasMine && x.status === SquareStatus.Flag).length,
+    0
+  );
 
 export default gameSlice.reducer;

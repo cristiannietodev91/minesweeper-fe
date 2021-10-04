@@ -10,6 +10,8 @@ import {
   selectGameStatus,
   setGame,
   selectGame,
+  selectRemainingMines,
+  selectWinGame,
 } from "app/reducers/gameSlice";
 import Board from "components/ui/Board/Board";
 import styles from "./Game.module.css";
@@ -25,6 +27,8 @@ const Game = () => {
   const player = useSelector(selectPlayer);
   const gameStatus = useSelector(selectGameStatus);
   const game = useSelector(selectGame);
+  const remainingMines = useSelector(selectRemainingMines);
+  const winGame = useSelector(selectWinGame);
 
   const dispatch = useDispatch();
 
@@ -39,7 +43,6 @@ const Game = () => {
     if (gameStatus !== GameStatus.Over) {
       if (e.type === "click") {
         if (gameStatus === GameStatus.Initiating && game) {
-          //TODO: Start game
           startGame({
             idgame: game,
             x,
@@ -90,6 +93,17 @@ const Game = () => {
           <div className={styles.msgContainer}>
             {" "}
             <span>You lost! &#128534;</span>
+          </div>
+        )}
+        {gameStatus !== GameStatus.Over && (
+          <div className={styles.msgContainer}>
+            Remaining mines {remainingMines}
+          </div>
+        )}
+        {winGame && gameStatus !== GameStatus.Initiating && (
+          <div className={styles.msgContainer}>
+            {" "}
+            <span>You Win! &#129311;</span>
           </div>
         )}
         <Board board={board} handleClick={handleClick}></Board>
