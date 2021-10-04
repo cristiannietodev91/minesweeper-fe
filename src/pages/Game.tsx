@@ -95,12 +95,12 @@ const Game = () => {
             <span>You lost! &#128534;</span>
           </div>
         )}
-        {gameStatus !== GameStatus.Over && (
+        {gameStatus === GameStatus.Playing && (
           <div className={styles.msgContainer}>
             Remaining mines {remainingMines}
           </div>
         )}
-        {winGame && gameStatus !== GameStatus.Initiating && (
+        {winGame && gameStatus === GameStatus.Playing && (
           <div className={styles.msgContainer}>
             {" "}
             <span>You Win! &#129311;</span>
@@ -120,10 +120,14 @@ const Game = () => {
           className={styles.playButton}
           disabled={
             gameStatus !== GameStatus.NoGameLoad &&
-            gameStatus !== GameStatus.Over
+            gameStatus !== GameStatus.Over &&
+            !winGame
           }
         >
           {gameStatus === GameStatus.Over ? "Start again" : "Start game"}
+        </button>
+        <button onClick={() => handleStartGame()} className={styles.playButton}>
+          Restart game
         </button>
 
         <button

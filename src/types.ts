@@ -22,7 +22,8 @@ export enum GameStatus {
   NoGameLoad = "NoGameLoad",
   Initiating = "Initiating",
   Playing = "Playing",
-  Over = "Over"
+  Over = "Over",
+  Finished = "Finished"
 }
 
 export enum SquareStatus {
